@@ -1,0 +1,18 @@
+<?php
+
+?>
+<br>
+<h2>Cantidad de Preguntas Buenas Y Malas Por Area Tematica</h2>
+<br>
+<?echo form_tag("estadisticas/bmExamenArea/$examen_id")?>
+<select name="areatematica">
+    <?php foreach ($area as $areas){?>
+    <option value="<?=$areas->id?>"><?=$areas->nombre?></option>
+    <?}?>
+</select>
+
+<?echo submit_tag("Mostrar")."\n".end_form_tag()?>
+
+<?php if(isset($nombre)){
+    echo img_tag($nombre);
+}?>

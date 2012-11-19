@@ -1,0 +1,68 @@
+<script>
+function checkrequired(which){
+var pass=true
+if (document.images){
+for (i=0;i<which.length;i++){
+var tempobj=which.elements[i]
+if (tempobj.name.substring(0,8)=="required"){
+if (((tempobj.type=="text"||tempobj.type=="textarea")&&tempobj.value=='')||(tempobj.type.toString().charAt(0)=="s"&&tempobj.selectedIndex==-1)){
+pass=false
+break
+}
+}
+}
+}
+if (!pass){
+alert("Todos los campos del formulario deben ser digitados !!!!")
+return false
+}
+else
+return true
+}
+</script>
+<?php echo  form_tag('examen/createExamen',"onSubmit: return checkrequired(this)"); ?>
+<table border="0" cellspacing="1">
+    <tbody>
+        <tr>
+            <td>Id</td>
+            <td><?php echo numeric_field_tag('requiredexamen.id',"readonly: readonly","value: $examen->id");?></td>
+        </tr>
+        <tr>
+            <td>Nombre</td>
+            <td><?php echo text_field_tag('requiredexamen.nombre');?></td>
+        </tr>
+        <tr>
+            <td>Descripcion</td>
+            <td><?php echo textarea_tag('requiredexamen.descripcion');?></td>
+        </tr>
+        <tr>
+            <td>Fecha Inicio</td>
+            <td><?php echo date_field_tag('requiredexamen.fecha_inicio',"format: %Y-%m-%d");?></td>
+        </tr>
+        <tr>
+            <td>Fecha Fin</td>
+            <td><?php echo date_field_tag('requiredexamen.fecha_fin',"format: %Y-%m-%d");?></td>
+        </tr>
+        <tr>
+            <td>Estado</td>
+            <td><input type="checkbox" name="requiredexamen[estado]" checked="checked" /></td>
+        </tr>
+        <tr>
+            <td>Programa</td>
+            <td><select name="requiredexamen[programa_id]">
+                    <option value="1">Seleccione una Opcion</option>
+                    <?php foreach($programa as $programas){
+                           echo "<option value= \"$programas->id\">$programas->nombre</option>\n";
+                        }?>
+                </select></td>
+        </tr>
+        <tr><td><?php echo submit_tag("CREAR").link_to_action("deleteExamen/$examen->id",button_tag("CACELAR"))?></td></tr>
+    </tbody>
+    
+</table>
+<?php echo end_form_tag()?>
+<script type="text/javascript" language="javascript">
+    function cancelar(){
+        window.location = "/kumabiaphp/examen/deleteExamen/<?php echo $examen->id?>";
+    }
+</script>

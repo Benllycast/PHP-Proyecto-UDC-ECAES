@@ -1,0 +1,64 @@
+<?php
+View::content();
+?>
+<?if ($resultado != null)
+{?>
+<div id="hola"></div>
+<script type="text/javascript">
+
+    var chart;
+    chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'hola',
+            defaultSeriesType: 'line',
+            marginRight: 130,
+            marginBottom: 25
+        },
+        title: {
+            text: 'Progreso del programa en el Area',
+            x: -20 //center
+        },
+        xAxis: {
+            categories: [<?echo implode(",", $categoria)?>],
+            title: {
+                text: 'Examenes'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Indice de Respuestas'
+            },
+            plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+        },
+        tooltip: {
+            formatter: function() {
+                return '<b>'+ this.series.name +'</b><br/>'+
+                    this.x +': '+ this.y;
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -10,
+            y: 100,
+            borderWidth: 0
+        },
+        series: [{
+                name: 'Indice buenas/malas',
+                data: [<?echo implode(",", $serie)?>]
+            },{
+                name: 'Indice malas/buenas',
+                data: [<?echo implode(",", $serie2)?>]
+            }]
+    });
+
+</script>
+    <?}?>
+
+<span></span>
+<span></span>

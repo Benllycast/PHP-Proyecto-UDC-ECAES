@@ -1,0 +1,16 @@
+<ul id="cssmenu1">
+	<li><?echo link_to("profesor/index", "Inicio")?></li>
+    <li><?php echo link_to("login/logout", "Cerrar Sesion")?></li>
+    <li><a ><span class="imMnLv">Mi Info</span></a>
+        <ul>
+            <li><?php echo link_to("profesor/actualizarProfesor", "Editar");?></li>
+            <li><?php echo link_to("profesor/borrarProfesor", "Desativar Cuenta");?></li>
+        </ul>
+    </li>
+    <li><a ><span class="imMnLv">Preguntas</span></a>
+        <ul>
+            <li><?echo link_to("pregunta/index", "Ver Preguntas")?></li>
+            <li><?echo link_to("pregunta/nueva", "Crear Nueva Pregunta")?></li>
+       </ul>
+    </li>
+</ul>

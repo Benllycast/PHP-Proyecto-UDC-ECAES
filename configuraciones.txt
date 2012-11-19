@@ -1,0 +1,2 @@
+cargar modulo del apache en mod rewriter en la linea 118 de httpd.conf
+APLICAR EL APP_PACHT A UPLOAD_IMG_TAG

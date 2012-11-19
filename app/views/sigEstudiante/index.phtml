@@ -1,0 +1,16 @@
+<h1>SIG Estudiantes</h1>
+<br>
+<a style="font-size: medium">Selecciones El semestre para Escojer al Estudiante</a>
+<div style="margin: 1em 1em 1em 1em"><?echo form_remote_tag("sigEstudiante/listarEstudiantes", "update: areaTrabajoEstudiantes", "method: post")?>
+<label>Semestre: </label>
+        <?echo select_tag("semestre")?>
+        <?echo option_tag(0, "seleccione...")?>
+        <?for($i = 1 ; $i <= 10 ; $i++){?>
+            <?echo option_tag($i, $i)?>
+           <?}?>
+<?echo submit_tag("Buscar")?>
+<?echo end_form_tag()?>
+</div>
+<div id="areaTrabajoEstudiantes" style="border: black solid 0.1em; margin-top: .5em; ">
+    <samp></samp>
+</div>

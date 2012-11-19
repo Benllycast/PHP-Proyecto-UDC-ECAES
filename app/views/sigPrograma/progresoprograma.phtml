@@ -1,0 +1,15 @@
+<a style="font-size: medium">Selecciones El Area tematica Para Observar Progreso</a>
+<div style="margin: 1em 1em 1em 1em">
+    <?echo form_remote_tag("sigPrograma/comparacionExamenes", "update: graficaPrograma", "method: post")?>
+    <label>Area Tematica: </label>
+    <?echo select_tag("areatematica")?>
+    <?echo option_tag(-1, "seleccione...")?>
+    <?php foreach($resultado as $filas){
+        echo option_tag($filas["areatematica"], "Area ".$filas["areatematica"]);
+    }  ?>
+    <?echo submit_tag("Buscar")?>
+<?echo end_form_tag()?>
+</div>
+<div id="graficaPrograma">
+    <span></span>
+</div>

@@ -1,0 +1,25 @@
+<?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+?>
+<?php echo link_to_action("grafica")?>
+<br>
+<br>
+<div class="flotante" onclick="ventana()"><p>hola</p></div>
+<?php echo javascript_include_tag("scriptaculous/window");?>
+<?php echo stylesheet_link_tag("themes/default");?>
+<script type="text/javascript">
+    function ventana(){
+        var unaVentana = new Window({
+            width: 300,
+            height: 200,
+            title: "My ventana Prototype",
+            url: "respuesta/pregunta/49"
+        });
+    unaVentana.showCenter();
+    }
+</script>
+<div style='display:none' id='contenido'><h1>Hola a Todos</h1></div>

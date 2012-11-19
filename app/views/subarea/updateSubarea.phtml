@@ -1,0 +1,39 @@
+<?php View::content();?>
+<form action="<?php echo get_kumbia_url('subarea/updateSubarea');?>" method="POST">
+    <table border="0">
+        <thead>
+            <tr>
+               Actualizar Subarea
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td><input type="text" name="subarea[id]" value="<? echo $subarea->id?>" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td>Area tematica</td>
+                <td>
+                    <select name="subarea[areatematica_id]">
+                        <option value="<?php echo $subarea->getAreatematica()->id;?>" selected="true" ><?php echo $subarea->getAreatematica()->nombre;?></option>
+                        <?php foreach($areatematica as $areas){
+                           echo "<option value= \"$areas->id\">$areas->nombre</option>\n";
+                        }?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>NOMBRE</td>
+                <td><input type="text" name="subarea[nombre]" value="<?echo $subarea->nombre?>" /></td>
+            </tr>
+            <tr>
+                <td>DESCRIPCION</td>
+                <td><textarea name="subarea[descripcion]" rows="4" cols="20"><?echo $subarea->descripcion?></textarea></td>
+            </tr
+            <tr>
+                <td><input type="submit" value="ACTUALIZAR" /><?php echo link_to_action("index",button_tag("CANCELAR"));?></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+

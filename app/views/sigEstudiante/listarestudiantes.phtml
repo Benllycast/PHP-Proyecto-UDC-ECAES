@@ -1,0 +1,28 @@
+<?php
+View::content();
+?>
+<table cellspacing="1" cellpadding="0" border="0" width="100%" >
+    <?if ($resultado != null){?>
+    <thead>
+        <tr>
+            <th>COD</th>
+            <th>Nombre</th>
+            <th>Programa</th>
+            <th>Semestre</th>
+            <th>Progreso</th>
+        </tr>
+    </thead>
+    <tbody>    
+    <?php $i= true;
+    foreach($resultado as $paginas){?>
+        <tr bgcolor="<?php echo ($i)? '#CCDEFF':'#FFFFFF';?>" align="center">
+            <td><?echo $paginas["cod"]?></td>
+            <td><?echo $paginas["nombre"]?></td>
+            <td><?echo $paginas["programa"]?></td>
+            <td><?echo $paginas["semestre"]?></td>
+            <td><?echo link_to_remote("Ver...","action: sigEstudiante/progresoEstudiante/".$paginas["cod"],"update: areaTrabajoEstudiantes")?></td>
+        </tr>
+    <?php $i=($i)? false:true; }?>        
+    </tbody>
+    <?}?>
+</table>

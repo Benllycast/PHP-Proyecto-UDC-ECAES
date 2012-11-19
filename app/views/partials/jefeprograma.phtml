@@ -1,0 +1,46 @@
+<ul id="cssmenu1">
+	<li><?echo link_to("jefeprograma/index", "Inicio")?></li>
+    <li><?php echo link_to("login/logout", "Cerrar Sesion")?></li>
+    <li><a ><span class="imMnLv">Mi Info</span></a>
+        <ul>
+            <li><?php echo link_to("jefeprograma/actualizarJefePrograma", "Editar");?></li>
+            <li><?php echo link_to("jefeprograma/borrarJefePrograma", "Desativar Cuenta");?></li>
+            <li><?php echo link_to("jefeprograma/registrarJefePrograma", "Ingresar Nuevo Jefe");?></li>
+        </ul>
+    </li>
+    <li><a ><span class="imMnLv">Areas Tematicas</span></a>
+        <ul>
+            <li><?echo link_to("areatematica/index", "Ver")?></li>
+            <li><?echo link_to("areatematica/nueva", "Crear Nueva Area Tematica")?></li>
+       </ul>
+    </li>
+    <li><a ><span class="imMnLv">Sub Areas</span></a>
+        <ul>
+            <li><?echo link_to("subarea/index", "Ver")?></li>
+            <li><?echo link_to("subarea/nueva", "Crear Nueva Subarea")?></li>
+        </ul>
+    </li>
+    <li><a ><span class="imMnLv">Tipos Preg.</span></a>
+        <ul>
+            <li><?echo link_to("tipo/index", "Ver")?></li>
+            <li><?echo link_to("tipo/nueva", "Crear Nuevo Tipo")?></li>
+        </ul>
+    </li>
+    <li><a ><span class="imMnLv">Examenes</span></a>
+        <ul>
+            <li><?echo link_to("examen/index", "Ver")?></li>
+            <li><?echo link_to("examen/nueva", "Crear Nuevo Examen")?></li>
+        </ul>
+    </li>
+    <li><a ><span class="imMnLv">Profesores</span></a>
+        <ul>
+            <li><?echo link_to("profesor/registrarProfesor", "Ingresar Profesor Al Sistema")?></li>
+        </ul>
+    </li>
+    <li><a><span class="imMnLv">Informes</span></a>
+        <ul>
+            <li><? echo link_to("sistemainformacion/index", "Sistema de Informacion")?></li>
+            <li><?echo link_to("estadisticas/index", "Estadisticas")?></li>
+        </ul>    
+    </li>
+</ul>

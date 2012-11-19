@@ -1,0 +1,17 @@
+<ul id="cssmenu1">
+	<li><?echo link_to("estudiante/index", "Inicio")?></li>
+    <li><?php echo link_to("login/logout", "Cerrar Sesion")?></li>
+    <li><a href="#">My info</a>
+        <ul>
+            <li><?php echo link_to("estudiante/actualizarEstudiante", "Editar");?></li>
+            <li><?php echo link_to("estudiante/borrarEstudiante", "Desativar Cuenta");?></li>
+        </ul>
+    </li>
+    <li><a href="#">Cuestioanrios</a>
+        <ul>
+            <li><?echo link_to("cuestionario/cuestionarioEstudiante", "Ver Cuestionario Habilitados")?></li>
+            <li><?echo link_to("cuestionario/cuestionarioInscrito", "Ver Inscripciones")?></li>
+       </ul>
+    </li>
+    <li><?echo link_to("estadisticas/index", "Estadisticas")?></li>
+</ul>

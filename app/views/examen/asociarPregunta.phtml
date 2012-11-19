@@ -1,0 +1,131 @@
+<?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+?>
+<h2>Asociacion de pregunta al Examen <?php echo "($examen->id)-$examen->nombre"?></h2>
+<?php View::content();?>
+<table width="100%" border="0" cellspacing="1" cellpadding="0">
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <?php echo form_tag("examen/desasociarPregunta/$examen->id");?>
+  <tr>
+    <td>
+    <style type="text/css">
+    #cajaAsociadas{
+        height:200px;
+        background-color:inherit;
+        overflow:scroll;
+        border:black solid thin;
+    }
+    </style>
+    <div id="cajaAsociadas">
+    <table width="100%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <th scope="col">...</th>
+        <th scope="col">ID</th>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">CLAVE</th>
+        <th scope="col">TEMA</th>
+        <th scope="col">TIPO</th>
+        <th scope="col">AREATEMATICA</th>
+        <th scope="col">SUBAREA</th>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+      <?php foreach ($asoc as $aso){?>
+      <tr>
+      <td><input type="checkbox" name="<?php echo "box_pregunta[".$aso->id."]" ?>" value="<?php echo $aso->id?>" /></td>
+        <td><?php echo $aso->id?></td>
+        <td><?php echo $aso->nombre?></td>
+        <td><?php echo $aso->clave?></td>
+        <td><?php echo $aso->tema?></td>
+        <td><?php echo $aso->getTipo()->nombre?></td>
+        <td><?php echo $aso->getAreatematica()->nombre?></td>
+        <td><?php echo $aso->getSubarea()->nombre?></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <?php }?>
+    </table>
+    </div>
+    </td>
+  </tr>
+  <tr>
+      <td><?php echo hidden_field_tag('examen_id',"value: $examen->id").submit_tag("QUITAR")?></td>
+  </tr>
+  <?php echo end_form_tag();?>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+</tr><?php echo form_tag("examen/asociarPregunta/$examen->id");?>
+  <tr>
+    <td>
+    <style type="text/css">
+    #cajaPreguntas{
+        height:200px;
+        background-color:inherit;
+        overflow:scroll;
+        border:black solid thin;
+    }
+    </style>
+    <div id="cajaPreguntas">
+    <table width="100%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <th scope="col">...</th>
+        <th scope="col">ID</th>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">CLAVE</th>
+        <th scope="col">TEMA</th>
+        <th scope="col">TIPO</th>
+        <th scope="col">AREATEMATICA</th>
+        <th scope="col">SUBAREA</th>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+
+      <?php foreach ($pregunta as $preguntas){?>
+      <tr>
+      <td><input type="checkbox" name="<?php echo "box_pregunta[".$preguntas->id."]" ?>" value="<?php echo $preguntas->id?>" /></td>
+        <td><?php echo $preguntas->id?></td>
+        <td><?php echo $preguntas->nombre?></td>
+        <td><?php echo $preguntas->clave?></td>
+        <td><?php echo $preguntas->tema?></td>
+        <td><?php echo $preguntas->getTipo()->nombre?></td>
+        <td><?php echo $preguntas->getAreatematica()->nombre?></td>
+        <td><?php echo $preguntas->getSubarea()->nombre?></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <?php }?>
+
+    </table></div>
+    </td>
+  </tr>
+  
+  <tr>
+      <td><?php echo hidden_field_tag('examen_id',"value: $examen->id").submit_tag("ASOCIAR")?></td>
+  </tr><?php echo end_form_tag();?>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+      <td><?php echo link_to_action("index","Regresar Lista de Examenes").link_to_action("asociarPregunta/$examen->id","Actualizar");?></td>
+  </tr>
+</table>

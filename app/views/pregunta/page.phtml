@@ -1,0 +1,29 @@
+<?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+?>
+<table border="1" >
+ <tr>
+  <th>Id</th>
+  <th>texto</th>
+  <th>nivel</th>
+  <th>clave</th>
+  <th>tiempo</th>
+  <th>tema</th>
+ </tr>
+ <?php foreach($paginador->items as $p): ?>
+ <tr>
+  <td><?php echo $p->id; ?></td>
+  <td><?php echo $p->texto; ?></td>
+  <td><?php echo $p->nivel; ?></td>
+  <td><?php echo $p->clave; ?></td>
+  <td><?php echo $p->tiempo; ?></td>
+  <td><?php echo $p->tema; ?></td>
+ </tr>
+ <?php endforeach; ?>
+</table>
+
+<?php View::partial('paginators/classic', false, array('page' => $paginador, 'url' => 'pregunta/page')); ?>

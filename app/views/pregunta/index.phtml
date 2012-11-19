@@ -1,0 +1,26 @@
+<?php
+View::content();
+?>
+<br><h2>modulo de preguntas</h2>
+<table border="1" width="100%" >
+ <tr>
+  <th>Id</th>
+  <th>texto</th>
+  <th>nivel</th>
+  <th>clave</th>
+  <th>tiempo</th>
+  <th>tema</th>
+ </tr>
+ <?php foreach($paginador->items as $p): ?>
+  <?php echo tr_color('#CCDEFF', '#FFFFFF');?>
+  <td><?php echo $p->id; ?></td>
+  <td><?php echo $p->texto; ?></td>
+  <td><?php echo $p->nivel; ?></td>
+  <td><?php echo $p->clave; ?></td>
+  <td><?php echo $p->tiempo; ?></td>
+  <td><?php echo $p->tema; ?></td>
+  <td><?php echo link_to("pregunta/updatePregunta/$p->id", "Edict")."|".link_to("pregunta/deletePregunta/$p->id", "Elimin") ?></td>
+ <?php endforeach; ?>
+</table>
+<?php echo link_to("pregunta/nueva","Crear Nueva Pregunta")?>
+<?php View::partial('paginators/classic', false, array('page' => $paginador, 'url' => 'pregunta/index')); ?>

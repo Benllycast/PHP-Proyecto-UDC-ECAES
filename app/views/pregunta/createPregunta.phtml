@@ -1,0 +1,125 @@
+<script>
+    function checkrequired(which){
+        var pass=true
+        if (document.images){
+            for (i=0;i<which.length;i++){
+                var tempobj=which.elements[i]
+                if (tempobj.name.substring(0,8)=="required"){
+                    if (((tempobj.type=="text"||tempobj.type=="textarea")&&tempobj.value=='')||(tempobj.type.toString().charAt(0)=="s"&&tempobj.selectedIndex==-1)){
+                        pass=false
+                        break
+                    }
+                }
+            }
+        }
+        if (!pass){
+            alert("Todos los campos del formulario deben ser digitados !!!!")
+            return false
+        }
+        else
+            return true
+    }
+</script>
+<br>
+<h2>Crear Pregunta</h2>
+<?php View::content(); ?>
+<?php echo form_tag('pregunta/createPregunta',"onSubmit: return checkrequired(this)") ?>
+<?php echo hidden_field_tag(array('requiredpregunta.id')) ?>
+<?php echo hidden_field_tag(array('requiredpregunta.profesor_cod')) ?>
+<table>
+    <tr>
+        <td>Texto de la pregunta</td>
+        <td><?php echo textarea_tag('requiredpregunta.texto',"cols: 70","rows: 3")?></td>
+    </tr>
+    <tr>
+        <td>Nivel</td>
+        <td><?php echo numeric_field_tag(array('requiredpregunta.nivel')) ?></td>
+    </tr>
+    <tr>
+        <td>Clave</td>
+        <td><?php echo numeric_field_tag(array('requiredpregunta.clave')) ?>(Opcion de respuestas correcta)</td>
+    </tr>
+    <tr>
+        <td>Tema</td>
+        <td><?php echo text_field_tag(array('requiredpregunta.tema')) ?></td>
+    </tr>
+    <tr>
+        <td>Tiempo</td>
+        <td><?php echo numeric_field_tag(array('requiredpregunta.tiempo')) ?></td>
+    </tr>
+    <tr>
+        <td>Tipo</td>        
+        <td>
+            <?php echo select_tag(array('requiredpregunta.tipo_id'))?>
+            <?php echo option_tag("1", "selecciond un tipo","select: true")?>
+            <?php foreach ($tipo as $tipos)
+            {
+                echo option_tag($tipos->id ,$tipos->nombre)."\n";
+            }
+            echo "</select>";
+?>
+        </td>
+    </tr>
+    <!--<tr>
+        <td>Imagen</td>
+        <td><?php //echo text_field_tag(array('pregunta.imagen_id')) ?></td>
+    </tr>-->
+    <tr>
+        <td>Area Tematica</td>
+        <td>
+            <?php echo select_tag(array('requiredpregunta.areatematica_id'))?>
+            <?php echo option_tag("1", "selecciond un tipo","select: true")?>
+            <?php foreach ($areatematica as $areas)
+            {
+                echo option_tag($areas->id ,$areas->nombre)."\n";
+            }
+echo "</select>";
+?>
+        </td>
+    </tr>
+    <tr>
+        <td>Sub Area</td>
+        <td>
+            <?php echo select_tag(array('requiredpregunta.subarea_id'))?>
+            <?php echo option_tag("1", "selecciond un tipo","select: true")?>
+            <?php foreach ($subarea as $subareas)
+            {
+                echo option_tag($subareas->id ,$subareas->nombre)."\n";
+}
+echo "</select>";
+?>
+        </td>
+    </tr>
+
+</table>
+
+<table border="0" width="100%">
+    <thead>
+        <tr>
+            <th>Opciones de respuesta</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Opcion 1</td>
+            <td><?php echo textarea_tag("requiredoprespuesta.1","cols: 70","rows: 3")?></td>
+        </tr>
+        <tr>
+            <td>Opcion 2</td>
+            <td><?php echo textarea_tag("requiredoprespuesta.2","cols: 70","rows: 3")?></td>
+        </tr>
+        <tr>
+            <td>Opcion 3</td>
+            <td><?php echo textarea_tag("requiredoprespuesta.3","cols: 70","rows: 3")?></td>
+        </tr>
+        <tr>
+            <td>Opcion 4</td>
+            <td><?php echo textarea_tag("requiredoprespuesta.4","cols: 70","rows: 3")?></td>
+        </tr>
+        <tr>
+            <td><?php echo submit_tag('CREAR',"id: sbm"); ?><?php echo link_to("pregunta/deletePregunta/$requiredpregunta->id", button_tag("CANCELAR")); ?></td>
+        </tr>
+    </tbody>
+</table>
+
+<?php echo end_form_tag() ?>

@@ -1,0 +1,43 @@
+<h1>SIG PROGRAMAS</h1>
+<br>
+<?php
+View::content();
+?>
+<?echo View::partial("menuSigPrograma")?>
+<div id="areaTrabajoPrograma" style="border: black solid 0.1em; margin-top: 10px; max-height: 600px; overflow: auto">
+    <table cellspacing="1" cellpadding="0" border="0" width="100%" >
+    <?if ($resultado != null){?>
+    <thead>
+        <tr>
+            <th>Examen</th>
+            <th>Area Tematica</th>
+            <th>Buenas</th>
+            <th>Malas</th>
+            <th>Total</th>
+            <th>% Buenas</th>
+            <th>% Malas</th>
+            <th>Indice de Buenas / Malas</th>
+            <th>Indice de Malas / Buenas</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+    <?php $i= true;
+    foreach($resultado as $paginas){?>
+        <tr bgcolor="<?php echo ($i)? '#CCDEFF':'#FFFFFF';?>" align="center">
+            <td><?echo $paginas["examen"]?></td>
+            <td><?echo $paginas["areatematica"];?></td>
+            <td><?echo $paginas["cant_buenas"]?></td>
+            <td><?echo $paginas["cant_malas"]?></td>
+            <td><?echo $paginas["total_respuestas"]?></td>
+            <td><?echo $paginas["porcentaje_buenas"]*100?></td>
+            <td><?echo $paginas["porcentaje_malas"]*100?></td>
+            <td><?echo $paginas["indice_bm"]?></td>
+            <td><?echo $paginas["indice_mb"]?></td>
+            
+        </tr>
+    <?php $i=($i)? false:true; }?>
+    </tbody>
+    <?}?>
+</table>
+</div>

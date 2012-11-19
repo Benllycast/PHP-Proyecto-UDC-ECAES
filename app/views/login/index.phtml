@@ -1,0 +1,28 @@
+<?php View::content(); ?>
+
+<h2><p><strong>Inicio de Sesi&oacute;n</strong></p></h2>
+
+<div id="formlogin" align="left" >
+<hr width="27%" align="left">
+<br>
+<?php echo form_tag('login/index') ?>
+    <table>
+        <tr>
+            <th><label for="codigo">Codigo</label></th>
+            <td><?php echo numeric_field_tag("codigo");?></td>
+        </tr>
+        <tr>
+            <th><label for="password">Password</label></th>
+            <td><input type="password" name="password"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right"><?= submit_tag("Ingresar") ?></td>
+        </tr>
+    </table>
+
+
+<?php end_form_tag();?>
+<?php echo "<br>".link_to("estudiante/registrarEstudiante", "Registrarse Como Estudiante");?>
+    
+</div>
+

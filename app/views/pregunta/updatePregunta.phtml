@@ -1,0 +1,102 @@
+<script>
+function checkrequired(which){
+var pass=true
+if (document.images){
+for (i=0;i<which.length;i++){
+var tempobj=which.elements[i]
+if (tempobj.name.substring(0,8)=="required"){
+if (((tempobj.type=="text"||tempobj.type=="textarea")&&tempobj.value=='')||(tempobj.type.toString().charAt(0)=="s"&&tempobj.selectedIndex==-1)){
+pass=false
+break
+}
+}
+}
+}
+if (!pass){
+alert("Todos los campos del formulario deben ser digitados !!!!")
+return false
+}
+else
+return true
+}
+</script>
+<br><br>
+<h1>Actualizar Pregunta</h1>
+<?php View::content(); ?>
+<?php echo form_tag('pregunta/updatePregunta',"onSubmit: return checkrequired(this)") ?>
+<?php echo hidden_field_tag(array('requiredpregunta.id')) ?>
+<?php echo hidden_field_tag(array('requiredpregunta.profesor_cod')) ?>
+<table>
+    <tr>
+        <td>Texto de la pregunta</td>
+        <td><?php echo textarea_tag('requiredpregunta.texto',"cols: 70","rows: 3",$pregunta->texto)?></td>
+    </tr>
+    <tr>
+        <td>Nivel</td>
+        <td><?php echo text_field_tag(array('requiredpregunta.nivel')) ?></td>
+    </tr>
+    <tr>
+        <td>Clave</td>
+        <td><?php echo text_field_tag(array('requiredpregunta.clave')) ?></td>
+    </tr>
+    <tr>
+        <td>Tema</td>
+        <td><?php echo text_field_tag(array('requiredpregunta.tema')) ?></td>
+    </tr>
+    <tr>
+        <td>Tiempo</td>
+        <td><?php echo text_field_tag(array('requiredpregunta.tiempo')) ?></td>
+    </tr>
+    <tr>
+        <td>Tipo</td>
+        <td>
+        <?php echo select_tag(array('requiredpregunta.tipo_id'))?>
+        <?php echo option_tag($pregunta->tipo_id, "selecciond un tipo","select: true")?>
+        <?php foreach ($tipo as $tipos){
+            echo option_tag($tipos->id ,$tipos->nombre)."\n";
+            }
+            echo "</select>";
+            ?>
+        </td>
+    </tr>
+    <tr>
+        <td>Imagen</td>
+        <td><?php echo /*text_field_tag(array('pregunta.imagen_id'))*/upload_image_tag("imagen") ?></td>
+    </tr>
+    <tr>
+        <td>Area Tematica</td>
+        <td>
+        <?php echo select_tag(array('requiredpregunta.areatematica_id'))?>
+        <?php echo option_tag($pregunta->areatematica_id, "selecciond un tipo","select: true")?>
+        <?php foreach ($areatematica as $areas){
+            echo option_tag($areas->id ,$areas->nombre)."\n";
+            }
+            echo "</select>";
+            ?>
+        </td>
+    </tr>
+    <tr>
+        <td>Sub Area</td>
+        <td>
+        <?php echo select_tag(array('requiredpregunta.subarea_id'))?>
+        <?php echo option_tag($pregunta->subarea_id, "selecciond un tipo","select: true")?>
+        <?php foreach ($subarea as $subareas){
+            echo option_tag($subareas->id ,$subareas->nombre)."\n";
+            }
+            echo "</select>";
+            ?>
+        </td>
+    </tr>
+    <tr>
+       Opciones de respuesta
+    </tr>
+    <?php
+        foreach($oprespuesta as $opciones){
+            echo "<tr>\n<td>Opcion".$opciones['opcion']."</td>";
+            echo "\n<td>".textarea_tag("oprespuesta.".$opciones['opcion'],"cols: 70","rows: 1",$opciones['texto'])."</td>\n</tr>\n";
+    }?> 
+    <tr>
+            <td><?php echo submit_tag('ACTUALIZAR'); ?><?php echo link_to("pregunta/index/1", button_tag("cancelar")); ?></td>
+    </tr>
+</table>
+<?php echo end_form_tag() ?>

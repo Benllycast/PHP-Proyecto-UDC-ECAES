@@ -1,0 +1,2 @@
+undefined
+a:4:{i:0;a:4:{s:5:"Field";s:2:"id";s:4:"Type";s:4:"int4";s:4:"Null";s:2:"NO";s:3:"Key";s:3:"PRI";}i:1;a:4:{s:5:"Field";s:6:"nombre";s:4:"Type";s:4:"text";s:4:"Null";s:2:"NO";s:3:"Key";s:0:"";}i:2;a:4:{s:5:"Field";s:6:"numero";s:4:"Type";s:4:"int4";s:4:"Null";s:2:"NO";s:3:"Key";s:0:"";}i:3;a:4:{s:5:"Field";s:11:"descripcion";s:4:"Type";s:4:"text";s:4:"Null";s:3:"YES";s:3:"Key";s:0:"";}}

@@ -1,0 +1,30 @@
+<h2>Examen Inscritos</h2>
+<?php View::content()?>
+<table cellspacing="1" cellpadding="0" border="0" width="100%" >
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Programa</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php $i= true;
+    foreach($examen as $paginas){?>
+        <tr bgcolor="<?php echo ($i)? '#CCDEFF':'#FFFFFF';?>">
+            <td><?echo $paginas->id?></td>
+            <td><?echo $paginas->nombre?></td>
+            <td><?echo $paginas->descripcion?></td>
+            <td><?echo $paginas->getPrograma()->nombre?></td>
+            <td><?echo $paginas->fecha_inicio?></td>
+            <td><?echo $paginas->fecha_fin?></td>
+            <td><?echo ($paginas->estado == "t")? "Activo":"No Activo"?></td>
+            <td><?echo link_to_action("inscripciones/desinscribir/$paginas->id", "Desincribirme")?> | <?php echo link_to_action("realizarExamen/$paginas->id", "Realizar Examen")?></td>
+        </tr>
+    <?php $i=($i)? false:true; }?>
+    </tbody>
+</table>

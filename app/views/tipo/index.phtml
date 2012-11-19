@@ -1,0 +1,31 @@
+<?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+?>
+<br><h1 align="center">TIPOS DE PREGUNTAS</h1>
+<table border="1" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Numero</th>
+            <th>Descripcion</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php $i= true;
+    foreach($paginador->items as $paginas){?>
+        <tr bgcolor="<?php echo ($i)? '#CCDEFF':'#FFFFFF';?>">
+            <td><?echo $paginas->id?></td>
+            <td><?echo $paginas->nombre?></td>
+            <td><?echo $paginas->numero?></td>
+            <td><?echo $paginas->descripcion?></td>
+            <td><?echo link_to_action("deleteTipo/$paginas->id", "Eliminar")."|".link_to_action("updateTipo/$paginas->id", "Editar")?></td>
+        </tr>
+    <?php $i=($i)? false:true; }?>
+    </tbody>
+</table>
+<?php echo link_to_action('nueva', "Crear nueva Tipo");?>

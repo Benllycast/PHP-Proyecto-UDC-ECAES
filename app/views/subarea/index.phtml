@@ -1,0 +1,32 @@
+<?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+?>
+<br><h1 align="center">SubAreas</h1>
+<table border="1" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Area tematica</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php $i= true;
+    foreach($paginador->items as $paginas){?>
+        <tr bgcolor="<?php echo ($i)? '#CCDEFF':'#FFFFFF';?>">
+            <td><?echo $paginas->id?></td>
+            <td><?echo $paginas->nombre?></td>
+            <td><?echo $paginas->descripcion?></td>
+            <td><?echo $paginas->getAreatematica()->nombre?></td>
+            <td><?echo link_to_action("deleteSubarea/$paginas->id", "Eliminar")."|".link_to_action("updateSubarea/$paginas->id", "Editar")?></td>
+        </tr>
+    <?php $i=($i)? false:true; }?>
+    </tbody>
+</table>
+<?php echo link_to_action('nueva', "Crear nueva Subarea");?>
+<?php View::partial('paginators/classic', false, array('page' => $paginador, 'url' => 'subarea/index')); ?>

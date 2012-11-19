@@ -1,0 +1,28 @@
+<?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+?>
+<h2>Realizar Examen: <?php echo $examen->id;?></h2>
+<div >
+    <h1>ID EXAMEN : <?php echo $examen->id?></h1><br>
+    <h1>FECHA DE INICIO DEL EXAMEN: <?php echo $examen->fecha_inicio?></h1>
+    <h1>FECHA DE FINALIZACION DE EXAMEN: <?php echo $examen->fecha_inicio?></h1>
+    <h1>ESTADO ACTUAL DEL EXAMEN: <?php echo ($examen->estado)? "ACTIVO":"INACTIVO" ;?></h1>
+    <h1>PROGRAMA DEL EXAMEN: <?php echo $examen->getPrograma()->nombre;?></h1>
+    <h1>CANTIDAD DE PREGUNTAS : <?php echo $cantidad;?></h1>
+    <h1>AREAS TEMATICAS CUESTIONADAS:</h1>
+        <ul>
+        <br>
+            <?php foreach ($areatematica as $areas){?>
+            <li><h4><?php echo $areas->nombre?></h4></li>
+            <?}?>
+        </ul>
+    <h1>DESCRIPCION DEL EXAMEN:</h1><br>
+    <p align="justify"><?php echo $examen->descripcion?></p>
+    <br>
+    <br>
+    <?echo link_to("respuesta/pregunta/$examen->id", "ir a examen")?>
+</div>

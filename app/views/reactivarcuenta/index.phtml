@@ -1,0 +1,20 @@
+<?php
+View::content();
+?>
+<?php echo form_tag("reactivarcuenta/index");?>
+<table border="0">
+    <tbody>
+        <tr>
+            <td>Codigo</td>
+            <td><?php echo numeric_field_tag("cod");?></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><?echo password_field_tag("pass");?></td>
+        </tr>
+        <tr>
+            <td colspan="2"><?echo submit_tag("Reactivar Cuenta")?></td>
+        </tr>
+    </tbody>
+</table>
+<?php echo end_form_tag();?>

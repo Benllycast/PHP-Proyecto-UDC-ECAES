@@ -1,0 +1,26 @@
+<h2>Estadisticas de Examemes</h2>
+<table cellspacing="1" cellpadding="0" border="0" width="100%" >
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Programa</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+    <?php $i= true;
+    foreach($paginador->items as $paginas){?>
+        <tr bgcolor="<?php echo ($i)? '#CCDEFF':'#FFFFFF';?>">
+            <td><?echo $paginas->id?></td>
+            <td><?echo $paginas->nombre?></td>
+            <td><?echo $paginas->descripcion?></td>
+            <td><?echo $paginas->getPrograma()->nombre?></td>            
+            <td><?echo link_to("estadisticas/buenasMalasEstudiante/$paginas->id", "% Malas y Buenas")." | ".link_to("estadisticas/bmExamenAreaEst/$paginas->id"," Est. por Area")?></td>
+        </tr>
+    <?php $i=($i)? false:true; }?>
+    </tbody>
+</table>
+<?php View::partial('paginators/classic', false, array('page' => $paginador, 'url' => 'examen/index')); ?>
+

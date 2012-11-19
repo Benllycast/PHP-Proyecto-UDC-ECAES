@@ -1,0 +1,60 @@
+<script>
+function checkrequired(which){
+var pass=true
+if (document.images){
+for (i=0;i<which.length;i++){
+var tempobj=which.elements[i]
+if (tempobj.name.substring(0,8)=="required"){
+if (((tempobj.type=="text"||tempobj.type=="textarea")&&tempobj.value=='')||(tempobj.type.toString().charAt(0)=="s"&&tempobj.selectedIndex==-1)){
+pass=false
+break
+}
+}
+}
+}
+if (!pass){
+alert("Todos los campos del formulario deben ser digitados !!!!")
+return false
+}
+else
+return true
+}
+</script>
+<?php View::content();?>
+<form action="<?php echo get_kumbia_url('subarea/createSubarea');?>" method="POST" onSubmit=" return checkrequired(this)">
+    <table border="0">
+        <thead>
+            <tr>
+                <th>Nueva SubAreatematica</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td><input type="text" name="requiredsubarea[id]" value="<? echo $subarea->id?>" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td>Area tematica</td>
+                <td>
+                    <select name="requiredsubarea[areatematica_id]">
+                        <option value="<?php echo $subarea->getAreatematica()->id;?>">seleccione opcion</option>
+                        <?php foreach($areatematica as $areas){
+                           echo "<option value= \"$areas->id\">$areas->nombre</option>\n";
+                        }?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>NOMBRE</td>
+                <td><input type="text" name="requiredsubarea[nombre]"/></td>
+            </tr>
+            <tr>
+                <td>DESCRIPCION</td>
+                <td><textarea name="requiredsubarea[descripcion]" rows="4" cols="20"></textarea></td>
+            </tr
+            <tr>
+                <td><input type="submit" value="CREAR" /><?php echo link_to_action("deleteSubarea/$subarea->id",button_tag("CANCELAR"));?></td>
+            </tr>
+        </tbody>
+    </table>        
+</form>

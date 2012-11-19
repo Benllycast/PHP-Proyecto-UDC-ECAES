@@ -1,0 +1,18 @@
+<?php
+
+?>
+<br>
+<h2>Porcentaje de Buenas Y Malas</h2>
+<br>
+<?php echo img_tag($nombre);?>
+<br>
+<br>
+<h2>Consultar Buenas Y Malas por Area Tematica</h2>
+<?echo form_tag("estadisticas/bmExamenAreaEst/$examen_id")?>
+<select name="areatematica">
+    <?php foreach ($area as $areas){?>
+    <option value="<?=$areas->id?>"><?=$areas->nombre?></option>
+    <?}?>
+</select>
+
+<?echo submit_tag("Mostrar")."\n".end_form_tag()?>

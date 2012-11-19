@@ -1,0 +1,38 @@
+<?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+?>
+<h2>Examen <?php echo $examen->id?></h2>
+<table width="100%" border="0" cellspacing="1" cellpadding="0">
+  <tr>
+    <td width="19%"><strong>NOMBRE:</strong></td>
+    <td colspan="2"><?php echo $examen->nombre?> </td>
+  </tr>
+  <tr>
+    <td width="19%"><STRONG>FECHA INICIO:</STRONG></td>
+    <td colspan="2"><?php echo $examen->fecha_inicio?></td>
+  </tr>
+  <tr>
+    <td width="19%"><STRONG>FECHA FIN:</STRONG></td>
+    <td colspan="2"><?php echo $examen->fecha_fin?></td>
+  </tr>
+  <tr>
+    <td width="19%"><strong>ESTADO:</strong></td>
+    <td colspan="2"><?php echo ($examen->estado == "t")? "Activo":"No Activo"?></td>
+  </tr>
+  <tr>
+    <td width="19%"><STRONG>DESCRIPCION:</STRONG></td>
+    <td colspan="2"><p><?php echo $examen->descripcion?></p></td>
+  </tr>
+  <tr><td colspan="3">&nbsp;</td></tr>
+  <tr><td colspan="3">&nbsp;</td></tr>
+  <tr>
+      <td><?php echo link_to_action("updateExamen/$examen->id", "EDITAR EXAMEN")?></td>
+      <td><?php echo link_to_action("deleteExamen/$examen->id", "ELIMINAR EXAMEN")?></td>
+      <td><?php echo link_to_action("index", "REGRESAR A LISTA")?></td>
+      <td><?php echo link_to_action("asociarPregunta/$examen->id", "EDITAR PREGUNTAS")?></td>
+  </tr>
+</table>

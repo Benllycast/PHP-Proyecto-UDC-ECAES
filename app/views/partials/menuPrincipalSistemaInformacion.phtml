@@ -1,0 +1,18 @@
+<?php
+echo stylesheet_link_tag("ThemeOrange/theme");
+echo javascript_include_tag("ThemeOrange/theme");
+echo javascript_include_tag("ThemeOrange/jscookmenu");
+?>
+<div id="wb_MenuBar1">
+    <div id="MenuIDMenuBar1">
+        <ul>
+            <li id="menuItenPrograma"><span></span><span ><? echo link_to_remote("Programa", "update: areaTrabajo", "action: sigprograma/index")?></span></li>
+            <li id="menuItenEstduante"><span></span><span><? echo link_to_remote("Estudiantes", "update: areaTrabajo", "action: sigestudiante/index")?></span></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        <!--
+        cmDrawFromText('MenuIDMenuBar1', 'hbr', cmThemeOrange, 'ThemeOrange');
+        -->
+    </script>
+</div>

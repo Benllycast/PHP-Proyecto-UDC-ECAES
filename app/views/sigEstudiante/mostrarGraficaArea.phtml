@@ -1,0 +1,64 @@
+
+<?php
+
+$cadena = array();
+foreach ($serie as $key=>$value)
+{
+    $cadena[$key] = "{ name: 'Area Tematica $key', data:  [".implode(",", $value)."]}";
+}
+?>
+<div id="progreso"></div>
+<script type="text/javascript">
+
+    var chart;
+
+    chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'progreso',
+            defaultSeriesType: 'column'
+        },
+        title: {
+            text: 'Progreso Estudiante Por Examen'
+        },
+        subtitle: {
+            text: '%buenas / Examen'
+        },
+        xAxis: {
+            categories: [<?echo implode(",", $areas)?>
+            ],
+            title: {
+                text: 'Examenes'
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '% Buenas'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            backgroundColor: '#FFFFFF',
+            align: 'left',
+            verticalAlign: 'top',
+            x: 100,
+            y: 70,
+            floating: true,
+            shadow: true
+        },
+        tooltip: {
+            formatter: function() {
+                return 'Area Tematica '+
+                    this.x +': '+ this.y +' %';
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [<?echo implode(",", $cadena)?>]
+    });
+
+</script>

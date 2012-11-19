@@ -1,0 +1,55 @@
+<?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+*/
+
+?>
+<div id="graficas"></div>
+<script type="text/javascript">
+
+    var chart;
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'graficas',
+                defaultSeriesType: 'column'
+            },
+            title: {
+                text: 'Porcentaje Entre Buenas Y Malas Por Area Tematica'
+            },
+            xAxis: {
+                categories: [<?echo implode(',', $categoria)?>]
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '% Buenas/malas'
+                }
+            },
+            legend: {
+                align: 'right',
+                x: -100,
+                verticalAlign: 'top',
+                y: 20,
+                floating: true,
+                backgroundColor: '#FFFFFF',
+                borderColor: '#CCC',
+                borderWidth: 1,
+                shadow: false
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'normal'
+                }
+            },
+            series: [{
+                    name: 'buenas',
+                    data: [<?echo implode(',', $serie)?>]
+
+                },{
+                    name: 'malas',
+                    data: [<?echo implode(',', $serie2)?>]
+                }]
+        });
+
+</script>

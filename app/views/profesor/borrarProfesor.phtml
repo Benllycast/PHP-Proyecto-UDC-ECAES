@@ -1,0 +1,10 @@
+<?php View::content(); ?>
+<h2>Borrar Profesor</h2>
+<br>
+<?php echo form_tag('profesor/borrarProfesor');
+      echo text_field_tag("codigo");
+      echo submit_tag("borrar");
+      echo end_form_tag();
+      echo "<br>";
+      echo link_to_action("index","regresar al menu");
+?>

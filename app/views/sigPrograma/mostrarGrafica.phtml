@@ -1,0 +1,59 @@
+<?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+*/
+
+?>
+<div id="graficas"></div>
+<script type="text/javascript">
+
+    var chart;
+
+    chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'graficas',
+            defaultSeriesType: 'column'
+        },
+        title: {
+            text: 'Numero de Preguntas Buenas Y Malas Por Area Tematica'
+        },
+        xAxis: {
+            title:{
+                text: 'Area tematica'
+            },
+            categories: [<?echo implode(',', $categoria)?>]
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'numero de preguntas'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            backgroundColor: '#FFFFFF',
+            align: 'left',
+            verticalAlign: 'top',
+            x: 100,
+            y: 70,
+            floating: true,
+            shadow: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+                name: 'buenas',
+                data: [<?echo implode(',', $serie)?>]
+
+            },{
+                name: 'malas',
+                data: [<?echo implode(',', $serie2)?>]
+            }]
+    });
+
+</script>

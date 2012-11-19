@@ -1,0 +1,20 @@
+<?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+?>
+<div id="menuSigPrograma">
+    <div id="MenuIDMenuBar2">
+        <ul>
+            <li id="menuItenPrograma"><span></span><span ><?echo link_to_remote("Progreso del Programa", "update: areaTrabajoPrograma", "action: sigprograma/progresoprograma");?></span></li>
+            <li id="menuItenPrograma"><span></span><span ><?echo link_to_remote("Ver Resultados De Examen", "update: areaTrabajoPrograma", "action: sigPrograma/estadisticasResultadosExamen");?></span></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        <!--
+        cmDrawFromText('MenuIDMenuBar2', 'hbr', cmThemeOrange, 'ThemeOrange');
+        -->
+    </script>
+</div>

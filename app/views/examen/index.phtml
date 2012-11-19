@@ -1,0 +1,38 @@
+<?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+?>
+<h2>Administracion de Examemes</h2>
+<table cellspacing="1" cellpadding="0" border="0" width="100%" >
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Programa</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>            
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php $i= true;
+    foreach($paginador->items as $paginas){?>
+        <tr bgcolor="<?php echo ($i)? '#CCDEFF':'#FFFFFF';?>">
+            <td><?echo $paginas->id?></td>
+            <td><?echo $paginas->nombre?></td>
+            <td><?echo $paginas->descripcion?></td>
+            <td><?echo $paginas->getPrograma()->nombre?></td>
+            <td><?echo $paginas->fecha_inicio?></td>
+            <td><?echo $paginas->fecha_fin?></td>
+            <td><?echo ($paginas->estado == "t")? "Activo":"No Activo"?></td>
+            <td><?echo link_to_action("deleteExamen/$paginas->id", "Eliminar")."|".link_to_action("updateExamen/$paginas->id", "Editar")."|".link_to_action("readExamen/$paginas->id","VER")?></td>
+        </tr>
+    <?php $i=($i)? false:true; }?>
+    </tbody>
+</table>
+<?php echo link_to_action('nueva',"Crear Examen")?>
+<?php View::partial('paginators/classic', false, array('page' => $paginador, 'url' => 'examen/index')); ?>
